@@ -62,10 +62,10 @@ public class Categoria extends View {
 		
 		textPaint.setStrokeWidth(5);
 		textPaint.setColor(Color.BLACK);
-		canvas.drawText(name, barra.exactCenterX()-textPaint.descent(), barra.exactCenterY()-textPaint.descent(), textPaint);
+		canvas.drawText(name, barra.exactCenterX()+textPaint.descent(), barra.exactCenterY()+textPaint.descent(), textPaint);
 		textPaint.setColor(Color.WHITE);
 		textPaint.setStrokeWidth(1);
-		canvas.drawText(name, barra.exactCenterX(), barra.exactCenterY(), textPaint);
+		canvas.drawText(name, barra.exactCenterX()+textPaint.descent(), barra.exactCenterY()+textPaint.descent(), textPaint);
 		
 		
 	}
