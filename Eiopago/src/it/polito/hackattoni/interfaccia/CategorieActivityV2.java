@@ -58,12 +58,13 @@ public class CategorieActivityV2 extends Activity implements OnDownloadJSONCompl
 		
 	}
 	
-	public int dimensions(){
+	public float dimensions(){
 		
 		DisplayMetrics metrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-		return (int) (metrics.heightPixels/metrics.ydpi);
+		//return (int) (metrics.heightPixels/metrics.ydpi);
+		return metrics.density;
 	}
 	
 	private void disegnaGrafico(List<Item> downloadedItems) {
