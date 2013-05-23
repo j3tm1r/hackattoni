@@ -100,7 +100,8 @@ public class CategorieAdapter extends BaseAdapter {
 			v=new Categoria(vg.getContext());
 		}
 		Categoria c=(Categoria) v;
-		int color=Color.HSVToColor(255, new float[]{0f,((getCount()-i)*1.0f/getCount()),1.0f});
+		//int color=Color.HSVToColor(255, new float[]{0f,((getCount()-i)*1.0f/getCount()),1.0f});
+		int color=Color.HSVToColor(255, new float[]{0f,(percent(categorie.get(i).getSpesa()))/100.0f,1.0f});
 		c.setDim(dimensions);
 		c.setColor(color);
 		c.setLenght(percent(categorie.get(i).getSpesa()));
