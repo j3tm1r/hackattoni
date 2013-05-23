@@ -13,7 +13,7 @@
     <application
         android:name="it.polito.hackattoni.eiopago.MyApplication"
         android:allowBackup="true"
-        android:icon="@drawable/istruzione"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
