@@ -15,7 +15,7 @@ public class EIoPagoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eio_pago);
-        Button barreButton = (Button) findViewById(R.id.button2);
+        Button barreButton = (Button) findViewById(R.id.button1);
         barreButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
