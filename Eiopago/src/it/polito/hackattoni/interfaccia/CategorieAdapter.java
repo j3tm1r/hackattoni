@@ -105,7 +105,7 @@ public class CategorieAdapter extends BaseAdapter {
 		c.setColor(color);
 		c.setLenght(percent(categorie.get(i).getSpesa()));
 		//c.setLenght((i+1)*10);
-		c.setPadding(10, 10, 10, 10);
+		c.setPadding(10, 10, 10, 0);
 		c.setName(categorie.get(i).getCategoria());
 		c.setImage(matchID(i));
 		System.out.println("lunghezza= "+c.getLenght());
