@@ -67,11 +67,12 @@ public class CategorieAdapter extends BaseAdapter {
 		}
 		Categoria c=(Categoria) v;
 		int color=Color.HSVToColor(255, new float[]{0f,((getCount()-i)*1.0f/getCount()),1.0f});
+		c.setDim(dimensions);
 		c.setColor(color);
 		c.setLenght(percent(categorie.get(i).getSpesa()));
 		c.setPadding(10, 10, 10, 10);
 		c.setName(categorie.get(i).getCategoria());
-		c.setDim(dimensions);
+		
 		
 		return c;
 	}
