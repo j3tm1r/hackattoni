@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class CategorieActivityV2 extends Activity implements OnDownloadJSONCompl
 	private DownloadJSONArrayTask myDownloadJSONArrayTask;
 	private ProgressBar myProgressBar;
 	private TextView myTextView;
+	private ListView myListView;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class CategorieActivityV2 extends Activity implements OnDownloadJSONCompl
 		setContentView(R.layout.activity_categoriev2);
 		myProgressBar = (ProgressBar) findViewById(R.id.progressBar1);
 		myTextView = (TextView) findViewById(R.id.textViewAttendere);
+		myListView=(ListView) findViewById(R.id.lv);
 		
 		//Istanzio il nuovo thread che recupera il file json
 		myDownloadJSONArrayTask = new DownloadJSONArrayTask("/IoPago/Categorie", this);
@@ -48,6 +51,7 @@ public class CategorieActivityV2 extends Activity implements OnDownloadJSONCompl
 			//Nascondo la progress bar e disegno il grafico
 			myProgressBar.setVisibility(View.GONE);
 			myTextView.setVisibility(View.GONE);
+			myListView.setVisibility(View.VISIBLE);
 			disegnaGrafico(downloadedItems);
 		}
 		
@@ -58,11 +62,13 @@ public class CategorieActivityV2 extends Activity implements OnDownloadJSONCompl
 	private void disegnaGrafico(List<Item> downloadedItems) {
 		//DA ELIMINARE TUTTO QUI SOTTO:
 		
-		myTextView.setVisibility(View.VISIBLE);
+		/*myTextView.setVisibility(View.VISIBLE);
 		for (Item item : downloadedItems) {
 			myTextView.setText("\n"+myTextView.getText()+" "+item.getAnno()+" "+item.getCategoria()+" "+item.getRegione()+ " "+ item.getSpesa());
 			
-		}
+		}*/
+		
+		myListView.setAdapter(new CategorieAdapter(new int[]{33, 50, 99, 20}));
 	}
 
 }

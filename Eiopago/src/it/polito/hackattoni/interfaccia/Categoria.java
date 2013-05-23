@@ -51,10 +51,10 @@ public class Categoria extends View {
 		int h=getHeight();
 		barra.set(getPaddingLeft(),getPaddingTop(),(w-getPaddingLeft()-getPaddingRight())*lenght/100,h-getPaddingTop()-getPaddingBottom());
 		canvas.drawRect(barra, myPaint);
-		canvas.drawText(name, w, h, textPaint);
+		//canvas.drawText(name, w, h, textPaint);
 		textPaint.setColor(Color.WHITE);
 		textPaint.setStrokeWidth(5);
-		canvas.drawText(name, w, h, textPaint);
+		//canvas.drawText(name, w, h, textPaint);
 		
 		
 	}	
