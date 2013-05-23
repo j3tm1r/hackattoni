@@ -19,7 +19,7 @@ public class Categoria extends View {
 	private Rect barra;
 	private Paint myPaint;
 	private Paint textPaint;
-	private int dimensions;
+	private float dimensions;
 	
 	public Categoria(Context ctx){
 		this(ctx,null,0);
@@ -77,11 +77,10 @@ public class Categoria extends View {
 		int w=MeasureSpec.getSize(widthMeasureSpec);
 		int h=MeasureSpec.getSize(heightMeasureSpec);
 		
-		if(h<getPaddingTop()+getPaddingBottom()+40){
+		//if(h<getPaddingTop()+getPaddingBottom()+(40*dimensions)){
 			
-			//if(dimensions<=)
-			//h=getPaddingBottom()+getPaddingTop()+dimensions/7;
-		}
+			h=(int) (getPaddingBottom()+getPaddingTop()+(40*dimensions));
+		//}
 		setMeasuredDimension(w, h);
 	}
 
@@ -104,7 +103,7 @@ public class Categoria extends View {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public void setDim(int dimensions) {
+	public void setDim(float dimensions) {
 		this.dimensions=dimensions;
 		
 	}

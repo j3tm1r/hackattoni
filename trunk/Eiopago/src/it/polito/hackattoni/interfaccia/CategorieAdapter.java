@@ -14,15 +14,16 @@ public class CategorieAdapter extends BaseAdapter {
 	private int[] lunghezze;
 	private List<Item> categorie;
 	private double max;
-	private int dimensions;
+	private float dimensions;
 	
 
 	public CategorieAdapter(int[] lunghezze){
 		this.lunghezze=lunghezze;
 	}
 	
-	public CategorieAdapter(List<Item> categorie, int dimensions){
+	public CategorieAdapter(List<Item> categorie, float dimensions){
 		this.categorie=categorie;
+		this.dimensions=dimensions;
 		max=0;
 		for (Item item : categorie) {
 			if(item.getSpesa()>max){
