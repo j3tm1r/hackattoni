@@ -13,6 +13,7 @@ public class CategorieAdapter extends BaseAdapter {
 	
 	private int[] lunghezze;
 	private List<Item> categorie;
+	private double max;
 	
 
 	public CategorieAdapter(int[] lunghezze){
@@ -21,18 +22,25 @@ public class CategorieAdapter extends BaseAdapter {
 	
 	public CategorieAdapter(List<Item> categorie){
 		this.categorie=categorie;
+		max=0;
+		for (Item item : categorie) {
+			if(item.getSpesa()>max){
+				max=item.getSpesa();
+			}
+		}
+		
 	}
 
 	@Override
 	public int getCount() {
 		
-		return lunghezze.length;
+		return categorie.size();
 	}
 
 	@Override
 	public Object getItem(int i) {
 		
-		return lunghezze[i];
+		return categorie.get(i);
 	}
 
 	@Override
@@ -40,6 +48,14 @@ public class CategorieAdapter extends BaseAdapter {
 		
 		return i;
 	}
+	
+	public int percent(double value){
+
+		return (int) (value/max*100);
+		
+	}
+	
+	
 
 	@Override
 	public View getView(int i, View v, ViewGroup vg) {
@@ -50,9 +66,9 @@ public class CategorieAdapter extends BaseAdapter {
 		Categoria c=(Categoria) v;
 		int color=Color.HSVToColor(255, new float[]{0f,((getCount()-i)*1.0f/getCount()),1.0f});
 		c.setColor(color);
-		c.setLenght(lunghezze[i]);
+		c.setLenght(percent(categorie.get(i).getSpesa()));
 		c.setPadding(10, 10, 10, 10);
-		//c.setName(categorie.get(i).getCategoria());
+		c.setName(categorie.get(i).getCategoria());
 		
 		return c;
 	}
