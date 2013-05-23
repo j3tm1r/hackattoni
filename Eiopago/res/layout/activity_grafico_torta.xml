@@ -6,20 +6,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".JsonActivity" >
+    tools:context=".GraficoTortaActivity" >
 
     <TextView
-        android:id="@+id/textViewJson"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ActivityJson" />
+        android:text="ActivityGraficoTorta" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewJson"
-        android:layout_centerVertical="true"
-        android:src="@drawable/istruzione" />
 
 </RelativeLayout>

@@ -26,11 +26,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="it.polito.hackattoni.interfaccia.CategorieActivity"
+            android:name="it.polito.hackattoni.json.GraficoQuadratiActivity"
             android:label="@string/title_activity_categorie" >
         </activity>
         <activity
-            android:name="it.polito.hackattoni.json.JsonActivity"
+            android:name="it.polito.hackattoni.json.GraficoTortaActivity"
             android:label="@string/title_activity_json" >
         </activity>
         <activity

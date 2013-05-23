@@ -1,8 +1,8 @@
 package it.polito.hackattoni.eiopago;
 
-import it.polito.hackattoni.interfaccia.CategorieActivity;
 import it.polito.hackattoni.interfaccia.CategorieActivityV2;
-import it.polito.hackattoni.json.JsonActivity;
+import it.polito.hackattoni.json.GraficoQuadratiActivity;
+import it.polito.hackattoni.json.GraficoTortaActivity;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -23,7 +23,7 @@ public class EIoPagoActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-		        Intent i = new Intent(EIoPagoActivity.this,CategorieActivity.class);
+		        Intent i = new Intent(EIoPagoActivity.this,GraficoQuadratiActivity.class);
 				startActivity(i);
 			}
 		});
@@ -34,7 +34,7 @@ public class EIoPagoActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-		        Intent i = new Intent(EIoPagoActivity.this,JsonActivity.class);
+		        Intent i = new Intent(EIoPagoActivity.this,GraficoTortaActivity.class);
 				startActivity(i);
 			}
 		});
