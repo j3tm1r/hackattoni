@@ -28,11 +28,12 @@ public class CategorieActivityV2 extends Activity implements OnDownloadJSONCompl
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_categoriev2);
 		myProgressBar = (ProgressBar) findViewById(R.id.progressBar1);
+		
 		myTextView = (TextView) findViewById(R.id.textViewAttendere);
 		myListView=(ListView) findViewById(R.id.lv);
 		
 		//Istanzio il nuovo thread che recupera il file json
-		myDownloadJSONArrayTask = new DownloadJSONArrayTask("/IoPago/Categorie", this);
+		myDownloadJSONArrayTask = new DownloadJSONArrayTask("/IoPago/Categorie/2008", this);
 		myDownloadJSONArrayTask.execute();
 	}
 
