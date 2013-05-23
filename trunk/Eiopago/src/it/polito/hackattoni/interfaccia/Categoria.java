@@ -29,7 +29,9 @@ public class Categoria extends View {
 	public Categoria(Context ctx, AttributeSet attrs,int style){
 		super(ctx,attrs,style);
 		myPaint = new Paint();
+		myPaint.setAntiAlias(true);
 		textPaint = new Paint();
+		textPaint.setAntiAlias(true);
 
 		myPaint.setStrokeWidth(10);
 		myPaint.setStyle(Style.FILL_AND_STROKE);
@@ -37,11 +39,12 @@ public class Categoria extends View {
 		myPaint.setShadowLayer(5, 3, 3, 0x80000000);
 		barra= new Rect(0,0,0,0);
 		
-		textPaint.setStrokeWidth(3);
-		textPaint.setStyle(Style.STROKE);
-		textPaint.setColor(Color.BLACK);
-		textPaint.setTextSize(10);
-		textPaint.setTextAlign(Align.RIGHT);
+		
+		textPaint.setStyle(Style.FILL_AND_STROKE);
+		
+		textPaint.setTextSize(30);
+		textPaint.setTextAlign(Align.CENTER);
+
 		
 	}
 	
@@ -49,12 +52,16 @@ public class Categoria extends View {
 	public void onDraw(Canvas canvas){
 		int w=getWidth();
 		int h=getHeight();
+		
 		barra.set(getPaddingLeft(),getPaddingTop(),(w-getPaddingLeft()-getPaddingRight())*lenght/100,h-getPaddingTop()-getPaddingBottom());
 		canvas.drawRect(barra, myPaint);
-		//canvas.drawText(name, w, h, textPaint);
-		textPaint.setColor(Color.WHITE);
+		
 		textPaint.setStrokeWidth(5);
-		//canvas.drawText(name, w, h, textPaint);
+		textPaint.setColor(Color.BLACK);
+		canvas.drawText(name, w/2, h/2, textPaint);
+		textPaint.setColor(Color.WHITE);
+		textPaint.setStrokeWidth(1);
+		canvas.drawText(name, w/2, h/2, textPaint);
 		
 		
 	}	
