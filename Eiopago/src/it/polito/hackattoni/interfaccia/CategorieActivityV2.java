@@ -10,6 +10,7 @@ import it.polito.hackattoni.json.DownloadJSONArrayTask;
 import it.polito.hackattoni.json.OnDownloadJSONCompleted;
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ListView;
@@ -57,7 +58,13 @@ public class CategorieActivityV2 extends Activity implements OnDownloadJSONCompl
 		
 	}
 	
-	
+	public int dimensions(){
+		
+		DisplayMetrics metrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+		return (int) (metrics.heightPixels/metrics.ydpi);
+	}
 	
 	private void disegnaGrafico(List<Item> downloadedItems) {
 		//DA ELIMINARE TUTTO QUI SOTTO:
@@ -69,7 +76,9 @@ public class CategorieActivityV2 extends Activity implements OnDownloadJSONCompl
 		}*/
 		
 		//myListView.setAdapter(new CategorieAdapter(new int[]{33, 50, 99, 20}));
-		myListView.setAdapter(new CategorieAdapter(downloadedItems));
+		
+		myListView.setAdapter(new CategorieAdapter(downloadedItems, dimensions()));
+		System.out.println("AREA: "+dimensions());
 	}
 
 }

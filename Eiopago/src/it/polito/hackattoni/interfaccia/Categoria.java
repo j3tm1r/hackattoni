@@ -3,6 +3,7 @@ package it.polito.hackattoni.interfaccia;
 import android.R.color;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.graphics.*;
 import android.graphics.Paint.Align;
@@ -18,6 +19,7 @@ public class Categoria extends View {
 	private Rect barra;
 	private Paint myPaint;
 	private Paint textPaint;
+	private int dimensions;
 	
 	public Categoria(Context ctx){
 		this(ctx,null,0);
@@ -64,7 +66,9 @@ public class Categoria extends View {
 		canvas.drawText(name, w/2, h/2, textPaint);
 		
 		
-	}	
+	}
+	
+
 	
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -74,7 +78,9 @@ public class Categoria extends View {
 		int h=MeasureSpec.getSize(heightMeasureSpec);
 		
 		if(h<getPaddingTop()+getPaddingBottom()+40){
-			h=getPaddingBottom()+getPaddingTop()+40;
+			
+			//if(dimensions<=)
+			//h=getPaddingBottom()+getPaddingTop()+dimensions/7;
 		}
 		setMeasuredDimension(w, h);
 	}
@@ -97,5 +103,9 @@ public class Categoria extends View {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public void setDim(int dimensions) {
+		this.dimensions=dimensions;
+		
 	}
 }
