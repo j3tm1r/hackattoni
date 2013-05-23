@@ -14,4 +14,13 @@
         android:layout_height="wrap_content"
         android:text="ActivityJson" />
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewJson"
+        android:layout_below="@+id/textViewJson"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/istruzione" />
+
 </RelativeLayout>
