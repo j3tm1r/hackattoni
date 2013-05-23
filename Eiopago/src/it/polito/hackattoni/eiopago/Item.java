@@ -15,9 +15,6 @@ public class Item {
 	public int getAnno() {
 		return anno;
 	}
-	public void setAnno(int anno) {
-		this.anno = anno;
-	}
 	public String getRegione() {
 		return regione;
 	}

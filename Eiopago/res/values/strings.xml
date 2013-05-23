@@ -6,5 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_categorie">CategorieActivity</string>
     <string name="title_activity_json">JsonActivity</string>
+    <string name="title_activity_categorie_activity_v2">CategorieActivityV2</string>
 
 </resources>

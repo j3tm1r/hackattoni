@@ -1,6 +1,7 @@
 package it.polito.hackattoni.eiopago;
 
 import it.polito.hackattoni.interfaccia.CategorieActivity;
+import it.polito.hackattoni.interfaccia.CategorieActivityV2;
 import it.polito.hackattoni.json.JsonActivity;
 import android.os.Bundle;
 import android.app.Activity;
@@ -34,6 +35,17 @@ public class EIoPagoActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 		        Intent i = new Intent(EIoPagoActivity.this,JsonActivity.class);
+				startActivity(i);
+			}
+		});
+
+        Button barre2Button = (Button) findViewById(R.id.button3);
+        barre2Button.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+		        Intent i = new Intent(EIoPagoActivity.this,CategorieActivityV2.class);
 				startActivity(i);
 			}
 		});
