@@ -1,14 +1,12 @@
 package it.polito.hackattoni.interfaccia;
 
-import android.R.color;
+import it.polito.hackattoni.eiopago.R;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.graphics.*;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
-import android.graphics.Path.Direction;
 
 public class Categoria extends View {
 	
@@ -20,6 +18,7 @@ public class Categoria extends View {
 	private Paint myPaint;
 	private Paint textPaint;
 	private float dimensions;
+	private Bitmap logo;
 	
 	public Categoria(Context ctx){
 		this(ctx,null,0);
@@ -42,11 +41,9 @@ public class Categoria extends View {
 		barra= new Rect(0,0,0,0);
 		
 		
+		
 		textPaint.setStyle(Style.FILL_AND_STROKE);
-		
-
-
-		
+	
 	}
 	
 	@Override
@@ -54,20 +51,21 @@ public class Categoria extends View {
 		int w=getWidth();
 		int h=getHeight();
 		
-		barra.set(getPaddingLeft(),getPaddingTop(),(w-getPaddingLeft()-getPaddingRight())*lenght/100,h-getPaddingTop()-getPaddingBottom());
+		
+		
+		barra.set((int) (logo.getWidth()*0.9) ,getPaddingTop(),(w-getPaddingLeft()-getPaddingRight())*lenght/100,h-getPaddingTop()-getPaddingBottom());
 		canvas.drawRect(barra, myPaint);
 		
 		textPaint.setTextSize(30*dimensions);
-		textPaint.setTextAlign(Align.CENTER);
+		textPaint.setTextAlign(Align.LEFT);
 		
 		textPaint.setStrokeWidth(5);
 		textPaint.setColor(Color.BLACK);
-		canvas.drawText(name, barra.exactCenterX()+textPaint.descent(), barra.exactCenterY()+textPaint.descent(), textPaint);
+		canvas.drawText(name, logo.getWidth()+getPaddingLeft(), barra.exactCenterY()+textPaint.descent(), textPaint);
 		textPaint.setColor(Color.WHITE);
 		textPaint.setStrokeWidth(1);
-		canvas.drawText(name, barra.exactCenterX()+textPaint.descent(), barra.exactCenterY()+textPaint.descent(), textPaint);
-		
-		
+		canvas.drawText(name, logo.getWidth()+getPaddingLeft(), barra.exactCenterY()+textPaint.descent(), textPaint);
+		canvas.drawBitmap(logo, 0, -barra.exactCenterY(), null);
 	}
 	
 
@@ -108,5 +106,9 @@ public class Categoria extends View {
 	public void setDim(float dimensions) {
 		this.dimensions=dimensions;
 		
+	}
+	public void setImage(int id){
+		this.logo=BitmapFactory.decodeResource(getResources(), id);
+	
 	}
 }
