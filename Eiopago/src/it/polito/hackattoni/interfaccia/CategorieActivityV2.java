@@ -77,6 +77,7 @@ public class CategorieActivityV2 extends Activity implements OnDownloadJSONCompl
 		}*/
 		
 		//myListView.setAdapter(new CategorieAdapter(new int[]{33, 50, 99, 20}));
+		//
 		
 		myListView.setAdapter(new CategorieAdapter(downloadedItems, dimensions()));
 		System.out.println("AREA: "+dimensions());
