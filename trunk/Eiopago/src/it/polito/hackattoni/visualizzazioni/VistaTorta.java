@@ -57,7 +57,7 @@ public class VistaTorta extends View {
 		mPaint = new Paint();
 		mPaint.setAntiAlias(true);
 
-		mPaint.setStrokeWidth(2);
+		mPaint.setStrokeWidth(1);
 		mPaint.setStyle(Style.STROKE);
 		mPaint.setColor(Color.BLUE);
 
