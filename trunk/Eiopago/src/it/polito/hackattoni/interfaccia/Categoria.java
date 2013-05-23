@@ -44,8 +44,7 @@ public class Categoria extends View {
 		
 		textPaint.setStyle(Style.FILL_AND_STROKE);
 		
-		textPaint.setTextSize(30);
-		textPaint.setTextAlign(Align.CENTER);
+
 
 		
 	}
@@ -58,12 +57,15 @@ public class Categoria extends View {
 		barra.set(getPaddingLeft(),getPaddingTop(),(w-getPaddingLeft()-getPaddingRight())*lenght/100,h-getPaddingTop()-getPaddingBottom());
 		canvas.drawRect(barra, myPaint);
 		
+		textPaint.setTextSize(30*dimensions);
+		textPaint.setTextAlign(Align.CENTER);
+		
 		textPaint.setStrokeWidth(5);
 		textPaint.setColor(Color.BLACK);
-		canvas.drawText(name, w/2, h/2, textPaint);
+		canvas.drawText(name, barra.exactCenterX()-textPaint.descent(), barra.exactCenterY()-textPaint.descent(), textPaint);
 		textPaint.setColor(Color.WHITE);
 		textPaint.setStrokeWidth(1);
-		canvas.drawText(name, w/2, h/2, textPaint);
+		canvas.drawText(name, barra.exactCenterX(), barra.exactCenterY(), textPaint);
 		
 		
 	}
