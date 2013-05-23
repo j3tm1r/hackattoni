@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Interfaccia a barre" />
+        android:text="Grafico Quadrati" />
 
     <Button
         android:id="@+id/button2"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/button1"
-        android:text="Recupero file json" />
+        android:text="Grafico Torta" />
 
     <Button
         android:id="@+id/button3"

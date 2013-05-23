@@ -14,18 +14,17 @@ import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.widget.TextView;
 
-public class JsonActivity extends Activity implements OnDownloadJSONCompleted {
+public class GraficoTortaActivity extends Activity implements OnDownloadJSONCompleted {
 	private DownloadJSONArrayTask myDownloadJSONArrayTask;
 	private TextView myTextView;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_json);
-		myTextView = (TextView) findViewById(R.id.textViewJson);
+		setContentView(R.layout.activity_grafico_torta);
+		myTextView = (TextView) findViewById(R.id.textView);
 		
 		myDownloadJSONArrayTask = new DownloadJSONArrayTask("/IoPago/Categorie", this);
 		myDownloadJSONArrayTask.execute();
-;		
 	}
 
 	@Override
