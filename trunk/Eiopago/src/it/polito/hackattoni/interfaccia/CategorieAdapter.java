@@ -52,7 +52,7 @@ public class CategorieAdapter extends BaseAdapter {
 		c.setColor(color);
 		c.setLenght(lunghezze[i]);
 		c.setPadding(10, 10, 10, 10);
-		c.setName(categorie.get(i).getCategoria());
+		//c.setName(categorie.get(i).getCategoria());
 		
 		return c;
 	}
