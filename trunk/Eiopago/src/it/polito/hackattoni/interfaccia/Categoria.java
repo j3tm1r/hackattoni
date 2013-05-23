@@ -65,7 +65,7 @@ public class Categoria extends View {
 		textPaint.setColor(Color.WHITE);
 		textPaint.setStrokeWidth(1);
 		canvas.drawText(name, logo.getWidth()+getPaddingLeft(), barra.exactCenterY()+textPaint.descent(), textPaint);
-		canvas.drawBitmap(logo, 0, -barra.exactCenterY(), null);
+		canvas.drawBitmap(logo, 0, +barra.exactCenterY()-(logo.getHeight()/2), null);
 	}
 	
 
@@ -79,7 +79,7 @@ public class Categoria extends View {
 		
 		//if(h<getPaddingTop()+getPaddingBottom()+(40*dimensions)){
 			
-			h=(int) (getPaddingBottom()+getPaddingTop()+(40*dimensions));
+			h=(int) (getPaddingBottom()+getPaddingTop()+(60*dimensions));
 		//}
 		setMeasuredDimension(w, h);
 	}
