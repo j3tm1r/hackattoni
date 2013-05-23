@@ -14,13 +14,14 @@ public class CategorieAdapter extends BaseAdapter {
 	private int[] lunghezze;
 	private List<Item> categorie;
 	private double max;
+	private int dimensions;
 	
 
 	public CategorieAdapter(int[] lunghezze){
 		this.lunghezze=lunghezze;
 	}
 	
-	public CategorieAdapter(List<Item> categorie){
+	public CategorieAdapter(List<Item> categorie, int dimensions){
 		this.categorie=categorie;
 		max=0;
 		for (Item item : categorie) {
@@ -69,6 +70,7 @@ public class CategorieAdapter extends BaseAdapter {
 		c.setLenght(percent(categorie.get(i).getSpesa()));
 		c.setPadding(10, 10, 10, 10);
 		c.setName(categorie.get(i).getCategoria());
+		c.setDim(dimensions);
 		
 		return c;
 	}
