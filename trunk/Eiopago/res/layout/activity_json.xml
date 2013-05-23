@@ -15,12 +15,35 @@
         android:text="ActivityJson" />
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewJson"
-        android:layout_below="@+id/textViewJson"
-        android:layout_marginTop="36dp"
-        android:src="@drawable/istruzione" />
+        android:layout_alignParentTop="true"
+        android:src="@drawable/istruzione120" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="47dp"
+        android:src="@drawable/istruzione48" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="56dp"
+        android:src="@drawable/istruzione160" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/istruzione96" />
 
 </RelativeLayout>
