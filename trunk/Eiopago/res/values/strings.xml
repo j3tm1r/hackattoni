@@ -9,5 +9,6 @@
     <string name="title_activity_categorie_activity_v2">CategorieActivityV2</string>
     <string name="title_activity_regioni">RegioniActivity</string>
     <string name="title_activity_grafico_quadrati_activity2">GraficoQuadratiActivity2</string>
+    <string name="title_activity_activity_proposta">ActivityProposta</string>
 
 </resources>
