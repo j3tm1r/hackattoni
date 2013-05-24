@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dip"
-    android:orientation="vertical" >
+    android:background="@drawable/popup_transp"
+    android:orientation="vertical"
+    android:padding="15dp" >
 
     <LinearLayout
         android:id="@+id/headingmenu"
@@ -20,33 +22,50 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/argomento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="Argomento"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/black" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/regione"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="Regione"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/black" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/button1"
+        <LinearLayout
+            android:id="@+id/holdRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:gravity="center"
-            android:text="Button" />
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/votaButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:gravity="center"
+                android:text="Mi Piace" />
+
+            <TextView
+                android:id="@+id/voti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:text="TextView"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/dettaglio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView" />
