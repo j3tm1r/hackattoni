@@ -14,9 +14,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
+import android.widget.SeekBar;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 public class GraficoTortaActivity extends Activity implements
@@ -27,8 +29,10 @@ public class GraficoTortaActivity extends Activity implements
 	private List<Item> itemPro, itemAll;
 	private boolean procapite = false, allDown = false, proCapiteDown = false;
 	private Spinner mSpinner;
-	private int anno = 2008;
+	private int anno = 1996;
 	private String categoria;
+	private SeekBar mSeekBar;
+	private TextView mTextAnno;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,40 +43,75 @@ public class GraficoTortaActivity extends Activity implements
 
 		mTorta = (VistaTorta) findViewById(R.id.graficoTorta);
 
-		mSpinner = (Spinner) findViewById(R.id.spinner1);
+		mTextAnno = (TextView) findViewById(R.id.textAnno);
+		// mSpinner = (Spinner) findViewById(R.id.spinner1);
+		//
+		// // Create an ArrayAdapter using the string array and a default
+		// spinner
+		// // layout
+		// ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+		// this, R.array.anni_spinner,
+		// android.R.layout.simple_spinner_item);
+		// // Specify the layout to use when the list of choices appears
+		// adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// // Apply the adapter to the spinner
+		//
+		// mSpinner.setAdapter(adapter);
+		// mSpinner.setSelection(2008 - 1996);
+		//
+		// mSpinner.setOnItemSelectedListener(new
+		// AdapterView.OnItemSelectedListener() {
+		//
+		// @Override
+		// public void onItemSelected(AdapterView<?> arg0, View arg1, int pos,
+		// long arg3) {
+		// if (mSpesaPro.isChecked())
+		// mSpesaPro.toggle();
+		// procapite = false;
+		// myDownloadJSONArrayTask = new DownloadJSONArrayTask(
+		// "/IoPago/Categorie/" + categoria.replace(" ", "%20")
+		// + "/" + (1996 + pos), GraficoTortaActivity.this);
+		// myDownloadJSONArrayTask.execute();
+		// anno = 1996 + pos;
+		// }
+		//
+		// @Override
+		// public void onNothingSelected(AdapterView<?> arg0) {
+		//
+		// }
+		// });
 
-		// Create an ArrayAdapter using the string array and a default spinner
-		// layout
-		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-				this, R.array.anni_spinner,
-				android.R.layout.simple_spinner_item);
-		// Specify the layout to use when the list of choices appears
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		// Apply the adapter to the spinner
+		mSeekBar = (SeekBar) findViewById(R.id.cambiaAnno);
 
-		mSpinner.setAdapter(adapter);
-		mSpinner.setSelection(2008 - 1996);
-
-		mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+		mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 			@Override
-			public void onItemSelected(AdapterView<?> arg0, View arg1, int pos,
-					long arg3) {
+			public void onStopTrackingTouch(SeekBar arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onStartTrackingTouch(SeekBar arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				if (mSpesaPro.isChecked())
 					mSpesaPro.toggle();
 				procapite = false;
 				myDownloadJSONArrayTask = new DownloadJSONArrayTask(
-						"/IoPago/Categorie/" + categoria.replace(" ", "%20")  + "/" + (1996 + pos),
+						"/IoPago/Categorie/" + categoria.replace(" ", "%20")
+								+ "/" + (1996 + arg1),
 						GraficoTortaActivity.this);
 				myDownloadJSONArrayTask.execute();
-				anno = 1996 + pos;
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
-
+				anno = 1996 + arg1;
+				mTextAnno.setText("Anno : " + anno);
 			}
 		});
+
 		mSpesaPro = (ToggleButton) findViewById(R.id.spesaProCapite);
 		mSpesaPro.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -89,16 +128,20 @@ public class GraficoTortaActivity extends Activity implements
 				} else {
 					procapite = false;
 					myDownloadJSONArrayTask = new DownloadJSONArrayTask(
-							"/IoPago/Categorie/" + categoria.replace(" ", "%20")  + "/" + anno,
-							GraficoTortaActivity.this);
+							"/IoPago/Categorie/"
+									+ categoria.replace(" ", "%20") + "/"
+									+ anno, GraficoTortaActivity.this);
 					myDownloadJSONArrayTask.execute();
 				}
 
 			}
 		});
 
+		mTextAnno.setText("Anno : " + anno);
+
 		myDownloadJSONArrayTask = new DownloadJSONArrayTask(
-				"/IoPago/Categorie/" + categoria.replace(" ", "%20")  + "/" + anno, this);
+				"/IoPago/Categorie/" + categoria.replace(" ", "%20") + "/"
+						+ anno, this);
 		myDownloadJSONArrayTask.execute();
 	}
 
