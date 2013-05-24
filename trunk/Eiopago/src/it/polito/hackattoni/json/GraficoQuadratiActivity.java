@@ -79,14 +79,14 @@ public class GraficoQuadratiActivity extends Activity implements
 				// Apply the adapter to the spinner
 
 				mSpinner.setAdapter(adapter);
-				mSpinner.setSelection(2008 - 1996);
-				/*
+				mSpinner.setSelection(anno - 1996);
+				
 				mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
+					private boolean firstTime=true;
 					@Override
 					public void onItemSelected(AdapterView<?> arg0, View arg1, int pos,
 							long arg3) {
-						
+						/*
 						if (mSpesaPro.isChecked())
 							mSpesaPro.toggle();
 						procapite = false;
@@ -94,7 +94,18 @@ public class GraficoQuadratiActivity extends Activity implements
 								"/IoPago/Categorie/" + categoria.replace(" ", "%20")  + "/" + (1996 + pos),
 								GraficoTortaActivity.this);
 						myDownloadJSONArrayTask.execute();
-						anno = 1996 + pos;
+						*/
+						if(firstTime) {
+							firstTime=false;
+							return;
+						}
+						int anno = 1996 + pos;
+						Intent i = new Intent(getApplicationContext(),GraficoQuadratiActivity.class);
+				        i.putExtra("regione", regione);
+				        i.putExtra("anno",anno);
+				        startActivity(i);
+				        finish();
+				       
 						
 					}
 
@@ -103,7 +114,7 @@ public class GraficoQuadratiActivity extends Activity implements
 
 					}
 				});
-				*/
+				
 		
 		
 		chiudiLegenda = (Button) findViewById(R.id.chiudiLegend);
