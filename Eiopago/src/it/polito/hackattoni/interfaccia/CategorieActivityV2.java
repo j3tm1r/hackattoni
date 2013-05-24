@@ -7,6 +7,7 @@ import it.polito.hackattoni.eiopago.R;
 import it.polito.hackattoni.eiopago.R.layout;
 import it.polito.hackattoni.eiopago.R.menu;
 import it.polito.hackattoni.json.DownloadJSONArrayTask;
+import it.polito.hackattoni.json.GraficoTortaActivity;
 import it.polito.hackattoni.json.OnDownloadJSONCompleted;
 import android.os.Bundle;
 import android.app.Activity;
@@ -84,23 +85,10 @@ public class CategorieActivityV2 extends Activity implements OnDownloadJSONCompl
 		//
 		
 		myListView.setAdapter(new CategorieAdapter(downloadedItems, dimensions()));
-		myListView.setOnItemClickListener(new OnItemClickListener(){
 
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				
-				String cName= ((Categoria) myListView.getItemAtPosition(arg2)).getName();
-				//Intent newActivity1 = new Intent(CategorieActivityV2.this, NewActivity1.class);     
-	            //startActivity(newActivity1, cName);
-				
-			}});
 		System.out.println("AREA: "+dimensions());
 		
-		//DEBUG:
-		myTextView.setVisibility(View.VISIBLE);
-		myTextView.setText("Area: "+dimensions());
-		//FINE DEBUG
+
 	}
 
 }
