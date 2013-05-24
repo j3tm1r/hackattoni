@@ -37,7 +37,7 @@ public class EIoPagoActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 		        Intent i = new Intent(EIoPagoActivity.this,GraficoTortaActivity.class);
-		        
+		        i.putExtra("categoria", "Difesa");
 				startActivity(i);
 			}
 		});
