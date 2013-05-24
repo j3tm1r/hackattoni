@@ -1,5 +1,6 @@
 package it.polito.hackattoni.json;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.polito.hackattoni.eiopago.Item;
@@ -8,21 +9,94 @@ import it.polito.hackattoni.visualizzazioni.VistaTorta;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
+import android.widget.ToggleButton;
 
 public class GraficoTortaActivity extends Activity implements
 		OnDownloadJSONCompleted {
 	private DownloadJSONArrayTask myDownloadJSONArrayTask;
 	private VistaTorta mTorta;
+	private ToggleButton mSpesaPro;
+	private List<Item> itemPro, itemAll;
+	private boolean procapite = false, allDown = false, proCapiteDown = false;
+	private Spinner mSpinner;
+	private int anno = 2008;
+	private String categoria;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_grafico_torta);
-		
+
+		categoria = this.getIntent().getExtras().getString("categoria");
+
 		mTorta = (VistaTorta) findViewById(R.id.graficoTorta);
 
+		mSpinner = (Spinner) findViewById(R.id.spinner1);
+
+		// Create an ArrayAdapter using the string array and a default spinner
+		// layout
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+				this, R.array.anni_spinner,
+				android.R.layout.simple_spinner_item);
+		// Specify the layout to use when the list of choices appears
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// Apply the adapter to the spinner
+
+		mSpinner.setAdapter(adapter);
+		mSpinner.setSelection(2008 - 1996);
+
+		mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> arg0, View arg1, int pos,
+					long arg3) {
+				if (mSpesaPro.isChecked())
+					mSpesaPro.toggle();
+				procapite = false;
+				myDownloadJSONArrayTask = new DownloadJSONArrayTask(
+						"/IoPago/Categorie/" + categoria + "/" + (1996 + pos),
+						GraficoTortaActivity.this);
+				myDownloadJSONArrayTask.execute();
+				anno = 1996 + pos;
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+
+			}
+		});
+		mSpesaPro = (ToggleButton) findViewById(R.id.spesaProCapite);
+		mSpesaPro.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				if (isChecked) {
+					procapite = true;
+					myDownloadJSONArrayTask = new DownloadJSONArrayTask(
+							"/IoPago/Categorie/" + categoria + "/" + anno,
+							GraficoTortaActivity.this);
+					myDownloadJSONArrayTask.execute();
+				} else {
+					procapite = false;
+					myDownloadJSONArrayTask = new DownloadJSONArrayTask(
+							"/IoPago/Categorie/" + categoria + "/" + anno,
+							GraficoTortaActivity.this);
+					myDownloadJSONArrayTask.execute();
+				}
+
+			}
+		});
+
 		myDownloadJSONArrayTask = new DownloadJSONArrayTask(
-				"/IoPago/Regioni/2008", this);
+				"/IoPago/Categorie/" + categoria + "/" + anno, this);
 		myDownloadJSONArrayTask.execute();
 	}
 
@@ -41,7 +115,28 @@ public class GraficoTortaActivity extends Activity implements
 					.visualizzaDialogo(this,
 							"Errore di connessione nello scaricamento del json dal server");
 		} else {
-			mTorta.setChartValues(downloadedItems);
+			if (procapite) {
+				itemPro = downloadedItems;
+				int popolazione = 0;
+				List<Item> newList = new ArrayList<Item>();
+				for (Item item : downloadedItems) {
+					popolazione += item.getAbitanti();
+				}
+				for (int i = 0; i < itemAll.size(); i++) {
+					Item tmp = itemAll.get(i);
+
+					newList.add(new Item(tmp.getRegione(), tmp.getCategoria(),
+							tmp.getSpesa() / itemPro.get(i).getAbitanti(), tmp
+									.getAnno(), 0));
+				}
+
+				mTorta.setChartValues(newList);
+			} else {
+				allDown = true;
+				mTorta.setChartValues(downloadedItems);
+				itemAll = downloadedItems;
+			}
+
 		}
 	}
 

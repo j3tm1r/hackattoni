@@ -41,11 +41,10 @@ public class DownloadJSONArrayTask extends AsyncTask<Void, Integer, Void> {
 				JSONObject jo = myJSONArray.getJSONObject(i);
 				Item tmpItem = new Item(jo.getString("nome"),
 						jo.getString("categoria"), jo.getDouble("spesa"),
-						jo.getInt("anno"));
+						jo.getInt("anno"), jo.getInt("abitanti"));
 				myList.add(tmpItem);
 			}
 
-	
 		} catch (JSONException je) {
 			myError = true;
 		}
@@ -96,23 +95,24 @@ public class DownloadJSONArrayTask extends AsyncTask<Void, Integer, Void> {
 			myError = true;
 			return new JSONArray();
 		}
-		
+
 	}
-	
-	//Questa serve solo a visualizzare un dialog
+
+	// Questa serve solo a visualizzare un dialog
 	public void visualizzaDialogo(final Activity myActivity, String msg) {
 		AlertDialog.Builder myBuilder = new AlertDialog.Builder(myActivity);
 		myBuilder.setTitle("Avviso");
 		myBuilder.setMessage(msg);
-		myBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-			
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				myActivity.finish();
-				
-			}
-		});
-	AlertDialog myAlertDialog = myBuilder.create();
-	myAlertDialog.show();
+		myBuilder.setPositiveButton("Ok",
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						myActivity.finish();
+
+					}
+				});
+		AlertDialog myAlertDialog = myBuilder.create();
+		myAlertDialog.show();
 	}
 }
