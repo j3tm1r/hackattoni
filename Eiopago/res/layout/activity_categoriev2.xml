@@ -6,6 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background"
     tools:context=".CategorieActivityV2" >
 
     <ProgressBar
@@ -20,6 +21,7 @@
         android:id="@+id/lv"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:background="@drawable/background"
         android:visibility="gone" >
     </ListView>
 

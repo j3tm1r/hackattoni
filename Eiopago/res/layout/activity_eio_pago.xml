@@ -65,6 +65,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/immagine1" />
+        android:src="@drawable/immagine2" />
 
 </RelativeLayout>

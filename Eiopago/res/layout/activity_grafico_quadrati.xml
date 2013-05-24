@@ -27,6 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
+        android:background="@drawable/popup"
         android:text="Visualizza Legenda"
         android:visibility="invisible" />
     
@@ -56,6 +57,7 @@
             android:id="@+id/chiudiLegend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/popup"
             android:text="Nascondi" />
     </LinearLayout>
 
