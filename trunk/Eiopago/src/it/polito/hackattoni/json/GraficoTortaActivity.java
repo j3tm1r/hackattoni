@@ -137,7 +137,7 @@ public class GraficoTortaActivity extends Activity implements
 			}
 		});
 
-		mTextAnno.setText("Anno : " + anno);
+		mTextAnno.setText("Anno : 2008");
 
 		myDownloadJSONArrayTask = new DownloadJSONArrayTask(
 				"/IoPago/Categorie/" + categoria.replace(" ", "%20") + "/"
