@@ -54,6 +54,7 @@ public class VotaActivity extends Activity {
 				i.putExtra("categoria", categoria);
 				i.putExtra("voto", voto);
 				startActivity(i);
+				finish();
 			}
 		});
 

@@ -42,9 +42,10 @@ public class VotaActivity2 extends Activity implements OnDownloadJSONCompleted {
 			
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(getApplicationContext(),VotaActivity2.class);
+				Intent i = new Intent(getApplicationContext(),VotaActivity3.class);
 				i.putExtra("regione", regione);
 				startActivity(i);
+				finish();
 				
 			}
 		});
