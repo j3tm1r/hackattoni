@@ -8,6 +8,7 @@ import it.polito.hackattoni.eiopago.R;
 import it.polito.hackattoni.visualizzazioni.VistaTorta;
 import android.os.Bundle;
 import android.app.Activity;
+import android.text.Html;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -61,7 +62,7 @@ public class GraficoTortaActivity extends Activity implements
 					mSpesaPro.toggle();
 				procapite = false;
 				myDownloadJSONArrayTask = new DownloadJSONArrayTask(
-						"/IoPago/Categorie/" + categoria + "/" + (1996 + pos),
+						"/IoPago/Categorie/" + categoria.replace(" ", "%20")  + "/" + (1996 + pos),
 						GraficoTortaActivity.this);
 				myDownloadJSONArrayTask.execute();
 				anno = 1996 + pos;
@@ -81,13 +82,14 @@ public class GraficoTortaActivity extends Activity implements
 				if (isChecked) {
 					procapite = true;
 					myDownloadJSONArrayTask = new DownloadJSONArrayTask(
-							"/IoPago/Categorie/" + categoria + "/" + anno,
-							GraficoTortaActivity.this);
+							"/IoPago/Categorie/"
+									+ categoria.replace(" ", "%20") + "/"
+									+ anno, GraficoTortaActivity.this);
 					myDownloadJSONArrayTask.execute();
 				} else {
 					procapite = false;
 					myDownloadJSONArrayTask = new DownloadJSONArrayTask(
-							"/IoPago/Categorie/" + categoria + "/" + anno,
+							"/IoPago/Categorie/" + categoria.replace(" ", "%20")  + "/" + anno,
 							GraficoTortaActivity.this);
 					myDownloadJSONArrayTask.execute();
 				}
@@ -96,7 +98,7 @@ public class GraficoTortaActivity extends Activity implements
 		});
 
 		myDownloadJSONArrayTask = new DownloadJSONArrayTask(
-				"/IoPago/Categorie/" + categoria + "/" + anno, this);
+				"/IoPago/Categorie/" + categoria.replace(" ", "%20")  + "/" + anno, this);
 		myDownloadJSONArrayTask.execute();
 	}
 
