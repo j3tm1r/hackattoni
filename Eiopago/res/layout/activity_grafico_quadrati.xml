@@ -22,4 +22,33 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="Button"
+        android:visibility="invisible" />
+
+    <LinearLayout
+        android:id="@+id/legenda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical"
+        android:visibility="invisible" >
+
+        <ListView
+            android:id="@+id/legendaHolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </ListView>
+
+        <Button
+            android:id="@+id/chiudiLegend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nascondi" />
+    </LinearLayout>
+
 </FrameLayout>

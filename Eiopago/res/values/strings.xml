@@ -8,5 +8,6 @@
     <string name="title_activity_json">JsonActivity</string>
     <string name="title_activity_categorie_activity_v2">CategorieActivityV2</string>
     <string name="title_activity_regioni">RegioniActivity</string>
+    <string name="title_activity_grafico_quadrati_activity2">GraficoQuadratiActivity2</string>
 
 </resources>

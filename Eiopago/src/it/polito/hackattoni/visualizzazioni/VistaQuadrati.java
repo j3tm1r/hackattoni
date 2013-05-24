@@ -22,6 +22,12 @@ public class VistaQuadrati extends View {
 	private RectF myRect = new RectF();
 	private List<DimensioneConColore> myListOfLati;
 
+	public List<DimensioneConColore> getMyListOfLati() {
+		return myListOfLati;
+	}
+
+
+
 	public VistaQuadrati(Context context, List<Item> iList, int iScreenWidth, int iScreenHeight) {
 		super(context);
 		this.myList = iList;
@@ -93,7 +99,8 @@ public class VistaQuadrati extends View {
 		//double lato = spesa*width/max;
 		for (Item myItem : myList) {
 			int dimensione = (int)(myItem.getSpesa()*screenWidth/sommaSpese);
-			myListOfLati.add(new DimensioneConColore(dimensione));
+			String nome = myItem.getCategoria();
+			myListOfLati.add(new DimensioneConColore(dimensione,nome,myItem.getSpesa()));
 		}
 
 	}
