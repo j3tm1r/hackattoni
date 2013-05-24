@@ -8,6 +8,7 @@ import it.polito.hackattoni.eiopago.Item;
 import it.polito.hackattoni.eiopago.R;
 import it.polito.hackattoni.eiopago.R.layout;
 import it.polito.hackattoni.eiopago.R.menu;
+import it.polito.hackattoni.eiopago.VotaActivity;
 import it.polito.hackattoni.visualizzazioni.Legenda;
 import it.polito.hackattoni.visualizzazioni.VistaQuadrati;
 import android.os.Bundle;
