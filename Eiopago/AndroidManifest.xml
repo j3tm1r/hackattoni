@@ -51,8 +51,12 @@
             android:label="@string/title_activity_activity_proposta" >
         </activity>
         <activity
-            android:name="it.polito.hackattoni.eiopago.VotaActivity"
+            android:name="it.polito.hackattoni.json.VotaActivity"
             android:label="@string/title_activity_vota" >
+        </activity>
+        <activity
+            android:name="it.polito.hackattoni.json.VotaActivity2"
+            android:label="@string/title_activity_vota_activity2" >
         </activity>
     </application>
 

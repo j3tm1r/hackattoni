@@ -11,5 +11,6 @@
     <string name="title_activity_grafico_quadrati_activity2">GraficoQuadratiActivity2</string>
     <string name="title_activity_activity_proposta">ActivityProposta</string>
     <string name="title_activity_vota">VotaActivity</string>
+    <string name="title_activity_vota_activity2">VotaActivity2</string>
 
 </resources>
