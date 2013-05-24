@@ -147,6 +147,8 @@ public class CategorieAdapter extends BaseAdapter {
 			}
 		});
 
+		// v.setBackgroundResource(R.drawable.popup_transp);
+
 		return c;
 	}
 }

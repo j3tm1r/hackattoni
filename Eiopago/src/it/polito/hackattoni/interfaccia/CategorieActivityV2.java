@@ -28,7 +28,7 @@ public class CategorieActivityV2 extends Activity implements
 		setContentView(R.layout.activity_categoriev2);
 		myProgressBar = (ProgressBar) findViewById(R.id.progressBar1);
 
-		myTextView = (TextView) findViewById(R.id.textViewAttendere);
+		// myTextView = (TextView) findViewById(R.id.textViewAttendere);
 		myListView = (ListView) findViewById(R.id.lv);
 
 		// Istanzio il nuovo thread che recupera il file json
@@ -54,7 +54,7 @@ public class CategorieActivityV2 extends Activity implements
 		} else {
 			// Nascondo la progress bar e disegno il grafico
 			myProgressBar.setVisibility(View.GONE);
-			myTextView.setVisibility(View.GONE);
+			// myTextView.setVisibility(View.GONE);
 			myListView.setVisibility(View.VISIBLE);
 			disegnaGrafico(downloadedItems);
 		}
@@ -89,12 +89,12 @@ public class CategorieActivityV2 extends Activity implements
 
 		myListView.setAdapter(new CategorieAdapter(getResources(),
 				downloadedItems, dimensions(), CategorieActivityV2.this));
-		System.out.println("AREA: " + dimensions());
-
-		// DEBUG:
-		myTextView.setVisibility(View.VISIBLE);
-		myTextView.setText("Area: " + dimensions());
-		// FINE DEBUG
+//		System.out.println("AREA: " + dimensions());
+//
+//		// DEBUG:
+//		myTextView.setVisibility(View.VISIBLE);
+//		myTextView.setText("Area: " + dimensions());
+//		// FINE DEBUG
 
 	}
 
