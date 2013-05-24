@@ -22,12 +22,54 @@
         android:layout_alignTop="@+id/graficoTorta"
         android:layout_marginTop="10dp" />
 
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="120dip"
+    <!-- <Spinner -->
+    <!-- android:id="@+id/spinner1" -->
+    <!-- android:layout_width="120dip" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_alignRight="@+id/graficoTorta" -->
+    <!-- android:layout_alignTop="@+id/spesaProCapite" -->
+    <!-- android:layout_marginRight="10dp" /> -->
+
+    <SeekBar
+        android:id="@+id/cambiaAnno"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/graficoTorta"
-        android:layout_alignTop="@+id/spesaProCapite"
-        android:layout_marginRight="10dp" />
+        android:layout_alignBottom="@+id/graficoTorta"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:max="11"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:progress="11"
+        android:progressDrawable="@drawable/seekbar_progress"
+        android:secondaryProgress="0"
+        android:thumb="@drawable/seek_thumb_normal" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cambiaAnno"
+        android:layout_alignParentLeft="true"
+        android:text="1996"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignParentRight="true"
+        android:text="2008"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textAnno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/spesaProCapite"
+        android:layout_alignParentRight="true"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
