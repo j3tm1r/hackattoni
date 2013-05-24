@@ -1,5 +1,9 @@
 package it.polito.hackattoni.visualizzazioni;
 
+import it.polito.hackattoni.eiopago.Item;
+
+import java.util.List;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -14,7 +18,7 @@ import android.view.View;
 
 public class VistaTorta extends View {
 
-	private double values[] = { 0.1, 0.35, 0.05, 0.1, 0.05, 0.02, 0.30, 0.03 };
+	private double values[] = { 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 };
 	private double mRadiuses[];
 	private double mAngles[];
 	private double mAngleSum;
@@ -28,6 +32,8 @@ public class VistaTorta extends View {
 	private Paint mPaint;
 	private Paint mFillPaint;
 	private Path mPath;
+
+	private List<Item> mItems;
 
 	public VistaTorta(Context context) {
 		this(context, null, 0);
@@ -83,7 +89,7 @@ public class VistaTorta extends View {
 		mDrawAngle = 0;
 		mWidth = getWidth();
 		mHeight = getHeight();
-		mBigW = (float) (0.8*(mWidth < mHeight ? mWidth : mHeight));
+		mBigW = (float) (1 * (mWidth < mHeight ? mWidth : mHeight));
 
 		for (int i = 0; i < values.length; i++) {
 			// resetto il path
@@ -108,13 +114,38 @@ public class VistaTorta extends View {
 			Log.d("AngoloDisegnato", " " + mDrawAngle);
 			// disegno
 
-			// Color.colorToHSV(Color.RED, hsvColor);
-			// hsvColor[1] = (float) (1 - (max - values[i]) / (max - min));
-			// hsvColor[2] = (float) (1 - mAngles[i] / mAngleSum);
-			//
-			// mFillPaint.setColor(Color.HSVToColor(hsvColor));
+			Color.colorToHSV(Color.RED, hsvColor);
+			hsvColor[1] = (float) (1 - (max - values[i]) / (max - min));
+			hsvColor[2] = (float) (1 - mAngles[i] / mAngleSum);
+
+			mFillPaint.setColor(Color.HSVToColor(hsvColor));
 			canvas.drawPath(mPath, mFillPaint);
 			canvas.drawPath(mPath, mPaint);
 		}
+	}
+
+	public void setChartValues(List<Item> downloadedItems) {
+		double spesaTotale = 0;
+		for (Item item : downloadedItems) {
+			spesaTotale += item.getSpesa();
+		}
+
+		double value;
+		values = new double[downloadedItems.size()];
+		mRadiuses = new double[values.length];
+		mAngles = new double[values.length];
+		mAngleSum = 0;
+		for (int i = 0; i < downloadedItems.size(); i++) {
+			value = downloadedItems.get(i).getSpesa() / spesaTotale;
+			values[i] = value;
+			mRadiuses[i] = Math.sqrt(value);
+			mAngles[i] = Math.sqrt(value);
+			mAngleSum += mAngles[i];
+			if (value < min)
+				min = value;
+			else if (value > max)
+				max = value;
+		}
+		this.invalidate();
 	}
 }
