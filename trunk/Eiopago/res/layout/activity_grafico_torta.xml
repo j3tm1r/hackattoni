@@ -11,7 +11,8 @@
     <it.polito.hackattoni.visualizzazioni.VistaTorta
         android:id="@+id/graficoTorta"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_margin="20dip" />
 
     <ToggleButton
         android:id="@+id/spesaProCapite"
