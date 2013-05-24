@@ -5,8 +5,10 @@ import it.polito.hackattoni.eiopago.Item;
 import java.util.List;
 
 import it.polito.hackattoni.eiopago.R;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
@@ -101,7 +103,7 @@ public class CategorieAdapter extends BaseAdapter {
 		}
 		Categoria c=(Categoria) v;
 		//int color=Color.HSVToColor(255, new float[]{0f,((getCount()-i)*1.0f/getCount()),1.0f});
-		int color=Color.HSVToColor(255, new float[]{0f,(percent(categorie.get(i).getSpesa()))/100.0f,1.0f});
+		int color=Color.HSVToColor(255, new float[]{230f,(percent(categorie.get(i).getSpesa()))/100.0f,1.0f});
 		c.setDim(dimensions);
 		c.setColor(color);
 		c.setLenght(percent(categorie.get(i).getSpesa()));
@@ -109,6 +111,7 @@ public class CategorieAdapter extends BaseAdapter {
 		c.setPadding(10, 10, 10, 0);
 		c.setName(categorie.get(i).getCategoria());
 		c.setImage(matchID(i));
+		
 		System.out.println("lunghezza= "+c.getLenght());
 		
 		

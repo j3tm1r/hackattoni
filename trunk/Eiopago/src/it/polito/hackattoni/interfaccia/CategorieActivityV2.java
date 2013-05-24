@@ -10,9 +10,12 @@ import it.polito.hackattoni.json.DownloadJSONArrayTask;
 import it.polito.hackattoni.json.OnDownloadJSONCompleted;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -81,6 +84,17 @@ public class CategorieActivityV2 extends Activity implements OnDownloadJSONCompl
 		//
 		
 		myListView.setAdapter(new CategorieAdapter(downloadedItems, dimensions()));
+		myListView.setOnItemClickListener(new OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				
+				String cName= ((Categoria) myListView.getItemAtPosition(arg2)).getName();
+				//Intent newActivity1 = new Intent(CategorieActivityV2.this, NewActivity1.class);     
+	            //startActivity(newActivity1, cName);
+				
+			}});
 		System.out.println("AREA: "+dimensions());
 		
 		//DEBUG:
