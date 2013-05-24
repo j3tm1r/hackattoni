@@ -48,13 +48,16 @@ public class VistaQuadrati extends View {
 			foreground.setColor(elem.getColore_bordo());
 			
 			borderRectangle.reset();
-			canvas.translate((float)0, screenHeight-elem.getDimensione()); //porto giu
-			myRect.set(0, 0, elem.getDimensione(), elem.getDimensione());
+			float altezzaRettangolo=elem.getDimensione();
+			if (altezzaRettangolo>screenHeight*2/3)
+				altezzaRettangolo=screenHeight*2/3; //taglio l'altezza del rettangolo se supera di due terzi lo schermo
+			canvas.translate((float)0, screenHeight-altezzaRettangolo); //porto giu
+			myRect.set(0, 0, elem.getDimensione(), altezzaRettangolo);
 			borderRectangle.addRoundRect(myRect, 5, 5, Path.Direction.CW);
 			canvas.drawPath(borderRectangle, background); //bordi rettangolo
 			canvas.drawPath(borderRectangle, foreground); //sfondo rettangolo
 			canvas.translate(elem.getDimensione()+1, (float)0); //mi sposto per il successivo rettangolo
-			canvas.translate((float)0, -screenHeight+elem.getDimensione()); //rimetto su
+			canvas.translate((float)0, -screenHeight+altezzaRettangolo); //rimetto su
 		}
 		
 
@@ -89,7 +92,8 @@ public class VistaQuadrati extends View {
 		}
 		//double lato = spesa*width/max;
 		for (Item myItem : myList) {
-			myListOfLati.add(new DimensioneConColore((int)(myItem.getSpesa()*screenWidth/sommaSpese)));
+			int dimensione = (int)(myItem.getSpesa()*screenWidth/sommaSpese);
+			myListOfLati.add(new DimensioneConColore(dimensione));
 		}
 
 	}
