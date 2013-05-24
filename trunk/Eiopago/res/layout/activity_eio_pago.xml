@@ -38,11 +38,12 @@
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/button1"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="26dp"
+        android:scaleType="fitCenter"
         android:src="@drawable/immagine1" />
 
 </RelativeLayout>
