@@ -35,7 +35,7 @@ public class VotaActivity2 extends Activity implements OnDownloadJSONCompleted {
 		myTextView.setText("La tua votazione è stata registrata!\n\nEcco le opinioni degli altri utenti della regione"+regione);
 		myProgressBar = (ProgressBar) findViewById(R.id.progressBar1);
 		
-		myVotaTask = new VotaTask("/Vota/user/"
+		myVotaTask = new VotaTask("/IoPago/Vota/user/"
 				+ regione + "/" +categoria+"/"+ (int)voto, this);
 		myVotaTask.execute();
 	}
