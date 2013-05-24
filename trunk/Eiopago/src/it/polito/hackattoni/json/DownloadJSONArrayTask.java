@@ -23,6 +23,10 @@ public class DownloadJSONArrayTask extends AsyncTask<Void, Integer, Void> {
 
 	private String path; // cartella nel server (es. "/IoPago/Categorie")
 	private List<Item> myList;
+	public List<Item> getMyList() {
+		return myList;
+	}
+
 	private OnDownloadJSONCompleted odjc;
 	private boolean myError = false;
 

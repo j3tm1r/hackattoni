@@ -25,6 +25,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -226,6 +227,24 @@ public class GraficoQuadratiActivity extends Activity implements
 				// });
 				// AlertDialog myAlertDialog = myBuilder.create();
 				// myAlertDialog.show();;
+				
+				//Visualizzo votazioni:
+				lv.setOnItemClickListener(new OnItemClickListener() {
+
+					@Override
+					public void onItemClick(AdapterView<?> arg0, View view,
+							int pos, long itemId) {
+						// TODO Auto-generated method stub
+						Intent i = new Intent(getApplication(),VotaActivity.class);
+						List<Item> myListOfItem = myDownloadJSONArrayTask.getMyList();
+						Item myItem = myListOfItem.get(pos);
+						String regioneTmp = myItem.getRegione().replace(" ", "%20");
+						String categoriaTmp = myItem.getCategoria().replace(" ", "%20");
+						i.putExtra("regione", regioneTmp);
+						i.putExtra("categoria", categoriaTmp);
+						startActivity(i);
+					}
+				});
 
 			}
 		});

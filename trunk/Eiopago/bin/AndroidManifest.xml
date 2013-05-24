@@ -8,12 +8,14 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="it.polito.hackattoni.eiopago.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:label="E io pago"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         <activity
             android:name="it.polito.hackattoni.eiopago.EIoPagoActivity"
             android:label="@string/app_name" >
@@ -24,8 +26,33 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="it.polito.hackattoni.interfaccia.CategorieActivity"
-            android:label="@string/title_activity_categorie" >
+            android:name="it.polito.hackattoni.json.GraficoQuadratiActivity"
+            android:label="@string/title_activity_categorie"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="it.polito.hackattoni.json.GraficoTortaActivity"
+            android:label="@string/title_activity_json" >
+        </activity>
+        <activity
+            android:name="it.polito.hackattoni.interfaccia.CategorieActivityV2"
+            android:label="@string/title_activity_categorie_activity_v2" >
+        </activity>
+        <activity
+            android:name="it.polito.hackattoni.interfaccia.RegioniActivity"
+            android:label="@string/title_activity_regioni" >
+        </activity>
+        <activity
+            android:name="it.polito.hackattoni.eiopago.GraficoQuadratiActivity2"
+            android:label="@string/title_activity_grafico_quadrati_activity2" >
+        </activity>
+        <activity
+            android:name="it.polito.hackattoni.proposte.ActivityProposta"
+            android:label="@string/title_activity_activity_proposta" >
+        </activity>
+        <activity
+            android:name="it.polito.hackattoni.eiopago.VotaActivity"
+            android:label="@string/title_activity_vota" >
         </activity>
     </application>
 
