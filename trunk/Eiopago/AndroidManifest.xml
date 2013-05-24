@@ -14,7 +14,7 @@
         android:name="it.polito.hackattoni.eiopago.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:label="E io pago"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         <activity
             android:name="it.polito.hackattoni.eiopago.EIoPagoActivity"
@@ -45,6 +45,10 @@
         <activity
             android:name="it.polito.hackattoni.eiopago.GraficoQuadratiActivity2"
             android:label="@string/title_activity_grafico_quadrati_activity2" >
+        </activity>
+        <activity
+            android:name="it.polito.hackattoni.proposte.ActivityProposta"
+            android:label="@string/title_activity_activity_proposta" >
         </activity>
         <activity
             android:name="it.polito.hackattoni.eiopago.VotaActivity"
