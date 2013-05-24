@@ -41,6 +41,10 @@
             android:name="it.polito.hackattoni.eiopago.RegioniActivity"
             android:label="@string/title_activity_regioni" >
         </activity>
+        <activity
+            android:name="it.polito.hackattoni.eiopago.GraficoQuadratiActivity2"
+            android:label="@string/title_activity_grafico_quadrati_activity2" >
+        </activity>
     </application>
 
 </manifest>

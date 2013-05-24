@@ -8,8 +8,17 @@ public class DimensioneConColore {
 	private float dimensione;
 	private int colore_bordo;
 	private int colore_sfondo;
-	public DimensioneConColore(float dimensione) {
+	private String nome;
+	private double soldi;
+	public double getSoldi() {
+		return soldi;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public DimensioneConColore(float dimensione, String nome, double soldi) {
 		this.dimensione=dimensione;
+		this.soldi=soldi;
 		Random rnd = new Random(); 
 		int a= rnd.nextInt(256);
 		if(a>=240)
@@ -18,6 +27,7 @@ public class DimensioneConColore {
 		int c = rnd.nextInt(256);
 		colore_bordo = Color.argb(255, a, b, c);  
 		colore_sfondo = Color.argb(201, a, b, c);
+		this.nome=nome;
 	}
 	public float getDimensione() {
 		return dimensione;
