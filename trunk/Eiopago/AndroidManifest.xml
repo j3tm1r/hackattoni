@@ -39,7 +39,7 @@
             android:label="@string/title_activity_categorie_activity_v2" >
         </activity>
         <activity
-            android:name="it.polito.hackattoni.eiopago.RegioniActivity"
+            android:name="it.polito.hackattoni.interfaccia.RegioniActivity"
             android:label="@string/title_activity_regioni" >
         </activity>
         <activity
