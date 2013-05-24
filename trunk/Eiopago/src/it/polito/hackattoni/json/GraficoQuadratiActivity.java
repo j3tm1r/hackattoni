@@ -24,6 +24,8 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -31,6 +33,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class GraficoQuadratiActivity extends Activity implements
@@ -46,6 +49,7 @@ public class GraficoQuadratiActivity extends Activity implements
 	private ListView lv;
 	private LinearLayout listHolder;
 	private Button chiudiLegenda;
+	private Spinner mSpinner;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,46 @@ public class GraficoQuadratiActivity extends Activity implements
 		myButton = (Button) findViewById(R.id.button1);
 		listHolder = (LinearLayout) findViewById(R.id.legenda);
 		lv = (ListView) findViewById(R.id.legendaHolder);
+		Spinner mSpinner = (Spinner) findViewById(R.id.spinner1);
+		
+		// Create an ArrayAdapter using the string array and a default spinner
+				// layout
+		
+				ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+						this, R.array.anni_spinner,
+						android.R.layout.simple_spinner_item);
+				// Specify the layout to use when the list of choices appears
+				adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+				// Apply the adapter to the spinner
+
+				mSpinner.setAdapter(adapter);
+				mSpinner.setSelection(2008 - 1996);
+				/*
+				mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+					@Override
+					public void onItemSelected(AdapterView<?> arg0, View arg1, int pos,
+							long arg3) {
+						
+						if (mSpesaPro.isChecked())
+							mSpesaPro.toggle();
+						procapite = false;
+						myDownloadJSONArrayTask = new DownloadJSONArrayTask(
+								"/IoPago/Categorie/" + categoria.replace(" ", "%20")  + "/" + (1996 + pos),
+								GraficoTortaActivity.this);
+						myDownloadJSONArrayTask.execute();
+						anno = 1996 + pos;
+						
+					}
+
+					@Override
+					public void onNothingSelected(AdapterView<?> arg0) {
+
+					}
+				});
+				*/
+		
+		
 		chiudiLegenda = (Button) findViewById(R.id.chiudiLegend);
 		chiudiLegenda.setOnClickListener(new View.OnClickListener() {
 
@@ -116,6 +160,7 @@ public class GraficoQuadratiActivity extends Activity implements
 							"Errore di connessione nello scaricamento del json dal server");
 		} else {
 			myProgressBar.setVisibility(View.GONE);
+			//mSpinner.setVisibility(View.VISIBLE);
 			disegnaGraficoQuadrato(downloadedItems);
 		}
 	}
