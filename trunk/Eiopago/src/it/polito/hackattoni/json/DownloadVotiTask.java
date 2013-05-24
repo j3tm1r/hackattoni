@@ -22,17 +22,17 @@ import android.os.AsyncTask;
 public class DownloadVotiTask extends AsyncTask<Void, Integer, Void> {
 
 	private String path; // cartella nel server (es. "/IoPago/Categorie")
-	private List<Item> myList;
-	public List<Item> getMyList() {
+	private List<VotoConCategoria> myList;
+	public List<VotoConCategoria> getMyList() {
 		return myList;
 	}
 
-	private OnDownloadJSONCompleted odjc;
+	private OnDownloadVotiCompleted odjc;
 	private boolean myError = false;
 
-	public DownloadVotiTask(String path, OnDownloadJSONCompleted odjc) {
+	public DownloadVotiTask(String path, OnDownloadVotiCompleted odjc) {
 		this.path = path;
-		myList = new ArrayList<Item>();
+		myList = new ArrayList<VotoConCategoria>();
 		this.odjc = odjc;
 	}
 
@@ -43,10 +43,8 @@ public class DownloadVotiTask extends AsyncTask<Void, Integer, Void> {
 		try {
 			for (int i = 0; i < myJSONArray.length(); i++) {
 				JSONObject jo = myJSONArray.getJSONObject(i);
-				Item tmpItem = new Item(jo.getString("nome"),
-						jo.getString("categoria"), jo.getDouble("spesa"),
-						jo.getInt("anno"), jo.getInt("abitanti"));
-				myList.add(tmpItem);
+				VotoConCategoria tmpVotoConCategoria = new VotoConCategoria(jo.getString("categoria"), jo.getDouble("media"));
+				myList.add(tmpVotoConCategoria);
 			}
 
 		} catch (JSONException je) {
@@ -57,7 +55,7 @@ public class DownloadVotiTask extends AsyncTask<Void, Integer, Void> {
 
 	@Override
 	protected void onPostExecute(Void v) {
-		odjc.onDownDownloadJSONCompleted(myList, myError);
+		odjc.onDownloadVotiCompleted(myList, myError);
 	}
 
 	@Override
