@@ -1,6 +1,7 @@
 package it.polito.hackattoni.eiopago;
 
 import it.polito.hackattoni.interfaccia.CategorieActivityV2;
+import it.polito.hackattoni.interfaccia.RegioniActivity;
 import it.polito.hackattoni.json.GraficoQuadratiActivity;
 import it.polito.hackattoni.json.GraficoTortaActivity;
 import android.os.Bundle;
@@ -53,7 +54,15 @@ public class EIoPagoActivity extends Activity {
 			}
 		});
 
+        Button regioniButton = (Button) findViewById(R.id.button4);
+        regioniButton.setOnClickListener(new OnClickListener(){
 
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(EIoPagoActivity.this,RegioniActivity.class);
+				startActivity(i);
+			}});
         
     }
 
