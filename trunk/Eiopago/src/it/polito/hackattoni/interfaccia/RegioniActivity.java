@@ -83,7 +83,7 @@ public class RegioniActivity extends Activity implements OnDownloadJSONCompleted
 		//myListView.setAdapter(new CategorieAdapter(new int[]{33, 50, 99, 20}));
 		//
 		
-		myListView.setAdapter(new RegioniAdapter(downloadedItems, dimensions()));
+		myListView.setAdapter(new RegioniAdapter(downloadedItems, dimensions(),RegioniActivity.this));
 
 		System.out.println("AREA: "+dimensions());
 		

@@ -18,30 +18,30 @@ public class EIoPagoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eio_pago);
-        Button barreButton = (Button) findViewById(R.id.button1);
-        barreButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-		        Intent i = new Intent(EIoPagoActivity.this,GraficoQuadratiActivity.class);
-		        i.putExtra("regione", "sardegna");
-		        i.putExtra("anno",2008);
-				startActivity(i);
-			}
-		});
-        
-        Button jsonButton = (Button) findViewById(R.id.button2);
-        jsonButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-		        Intent i = new Intent(EIoPagoActivity.this,GraficoTortaActivity.class);
-		        i.putExtra("categoria", "Difesa");
-				startActivity(i);
-			}
-		});
+//        Button barreButton = (Button) findViewById(R.id.button1);
+//        barreButton.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View arg0) {
+//				// TODO Auto-generated method stub
+//		        Intent i = new Intent(EIoPagoActivity.this,GraficoQuadratiActivity.class);
+//		        i.putExtra("regione", "sardegna");
+//		        i.putExtra("anno",2008);
+//				startActivity(i);
+//			}
+//		});
+//        
+//        Button jsonButton = (Button) findViewById(R.id.button2);
+//        jsonButton.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View arg0) {
+//				// TODO Auto-generated method stub
+//		        Intent i = new Intent(EIoPagoActivity.this,GraficoTortaActivity.class);
+//		        i.putExtra("categoria", "Difesa");
+//				startActivity(i);
+//			}
+//		});
 
         Button barre2Button = (Button) findViewById(R.id.button3);
         barre2Button.setOnClickListener(new OnClickListener() {
