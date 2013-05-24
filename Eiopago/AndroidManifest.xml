@@ -46,6 +46,10 @@
             android:name="it.polito.hackattoni.eiopago.GraficoQuadratiActivity2"
             android:label="@string/title_activity_grafico_quadrati_activity2" >
         </activity>
+        <activity
+            android:name="it.polito.hackattoni.eiopago.VotaActivity"
+            android:label="@string/title_activity_vota" >
+        </activity>
     </application>
 
 </manifest>
