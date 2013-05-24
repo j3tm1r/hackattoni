@@ -11,6 +11,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -21,6 +23,7 @@ public class VotaActivity2 extends Activity implements OnDownloadJSONCompleted {
 	private float voto;
 	private ProgressBar myProgressBar;
 	private VotaTask myVotaTask;
+	private Button myButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +35,19 @@ public class VotaActivity2 extends Activity implements OnDownloadJSONCompleted {
 		voto=i.getFloatExtra("voto", 3);
 		
 		myTextView = (TextView) findViewById(R.id.textView);
-		myTextView.setText("La tua votazione è stata registrata!\n\nEcco le opinioni degli altri utenti della regione"+regione);
+		myTextView.setText("La tua votazione è stata registrata!\n\nPremi il pulsante sottostante per visualizzare le opinioni degli altri utenti della regione "+regione);
 		myProgressBar = (ProgressBar) findViewById(R.id.progressBar1);
-		
+		myButton = (Button) findViewById(R.id.button1);
+		myButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(),VotaActivity2.class);
+				i.putExtra("regione", regione);
+				startActivity(i);
+				
+			}
+		});
 		myVotaTask = new VotaTask("/IoPago/Vota/user/"
 				+ regione + "/" +categoria+"/"+ (int)voto, this);
 		myVotaTask.execute();
