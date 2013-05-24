@@ -8,22 +8,27 @@ import it.polito.hackattoni.eiopago.Item;
 import it.polito.hackattoni.eiopago.R;
 import it.polito.hackattoni.eiopago.R.layout;
 import it.polito.hackattoni.eiopago.R.menu;
+import it.polito.hackattoni.visualizzazioni.VistaQuadrati;
 import android.os.Bundle;
 import android.app.Activity;
 import android.telephony.TelephonyManager;
+import android.util.DisplayMetrics;
 import android.view.Menu;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 public class GraficoQuadratiActivity extends Activity implements OnDownloadJSONCompleted {
 	private DownloadJSONArrayTask myDownloadJSONArrayTask;
 	private TextView myTextView;
+	private FrameLayout myFrameLayout;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_grafico_quadrati);
 		myTextView = (TextView) findViewById(R.id.textView);
+		myFrameLayout = (FrameLayout) findViewById(R.id.frame_layout_grafico_quadrati);
 		
-		myDownloadJSONArrayTask = new DownloadJSONArrayTask("/IoPago/Categorie", this);
+		myDownloadJSONArrayTask = new DownloadJSONArrayTask("/IoPago/Regioni/piemonte/2008", this);
 		myDownloadJSONArrayTask.execute();
 	}
 
@@ -39,12 +44,16 @@ public class GraficoQuadratiActivity extends Activity implements OnDownloadJSONC
 		if(error) {
 			myDownloadJSONArrayTask.visualizzaDialogo(this, "Errore di connessione nello scaricamento del json dal server");
 		}
-		else {
-			for (Item item : downloadedItems) {
-				myTextView.setText("\n"+myTextView.getText()+" "+item.getAnno()+" "+item.getCategoria()+" "+item.getRegione()+ " "+ item.getSpesa());
-				
-			}
+		else {		
+			disegnaGraficoQuadrato(downloadedItems);
 		}
+	}
+	
+	private void disegnaGraficoQuadrato(List<Item> iList) {
+		int width = myFrameLayout.getWidth();
+		int height = myFrameLayout.getHeight();
+		myFrameLayout.addView(new VistaQuadrati(this, iList, width, height));
+		
 	}
 
 }
