@@ -22,7 +22,7 @@ public class Legenda  {
 		List<TextView> tmpList = new ArrayList<TextView>();
 		for (DimensioneConColore elem : myListOfDimensioneConColore) {
 			TextView tmpTextView = new TextView(context);
-			tmpTextView.setText(elem.getNome()+"Soldi spesi: "+(int)elem.getSoldi()/1000000 +" Mln €");
+			tmpTextView.setText(elem.getNome()+" - Soldi spesi: "+(int)elem.getSoldi()/1000000 +" Mln €");
 			tmpTextView.setTextColor(elem.getColore_bordo());
 			tmpList.add(tmpTextView);
 		}
