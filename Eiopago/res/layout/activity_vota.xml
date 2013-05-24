@@ -29,7 +29,7 @@
         android:layout_above="@+id/button1"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="26dp"
-        android:rating="3.0"
+        android:rating="0.0"
         android:stepSize="1.0" />
 
 </RelativeLayout>

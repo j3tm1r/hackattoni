@@ -6,14 +6,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".VotaActivity2" >
+    tools:context=".VotaActivity3" >
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dip"
-        android:text="textview" 
-        android:visibility="invisible"/>
+        android:text="Risultati" />
 
     <ProgressBar
         android:id="@+id/progressBar1"
@@ -22,13 +21,5 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Visualizza grafico" />
 
 </RelativeLayout>
