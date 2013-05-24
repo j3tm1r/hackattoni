@@ -33,11 +33,12 @@ public class Legenda  {
 		for (DimensioneConColore elem : myListOfDimensioneConColore) {
 			TextView tmpTextView = new TextView(context);
 			tmpTextView.setText(elem.getNome()+" - Soldi spesi: "+(int)(elem.getSoldi()/1000000) +" Mln €");
-			tmpTextView.setTextColor(Color.BLACK);
+			tmpTextView.setTextColor(Color.WHITE);
+			tmpTextView.setShadowLayer(5, 0, 0, Color.BLACK);
 			tmpTextView.setWidth(width);
 			tmpTextView.setBackgroundResource(R.drawable.popup_transp);
 			tmpTextView.setBackgroundColor(elem.getColore_bordo());
-			
+					
 			tmpList.add(tmpTextView);
 		}
 		return tmpList;

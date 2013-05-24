@@ -9,6 +9,7 @@ import it.polito.hackattoni.eiopago.R.menu;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,6 +94,7 @@ public class VotaActivity3 extends Activity implements OnDownloadVotiCompleted {
 				arg1=new TextView(VotaActivity3.this);
 			}
 			((TextView) arg1).setText("Categoria: " + myAdapList.get(arg0).getCategoria() + "\nVoto medio: "+(int)myAdapList.get(arg0).getMedia());
+			((TextView) arg1).setTextColor(Color.BLACK);
 			((TextView) arg1).setTextSize(20);
 			return arg1;
 		}
