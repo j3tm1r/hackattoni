@@ -28,6 +28,8 @@ public class VistaTorta extends View {
 
 	private double mDrawAngle;
 
+	public List<DimensioneConColore> myListOfLati;
+
 	private RectF mOval;
 
 	private Paint mPaint;
@@ -52,12 +54,13 @@ public class VistaTorta extends View {
 		mAngleSum = 0;
 		mRadiuses = new double[values.length];
 		mAngles = new double[values.length];
-
+		myListOfLati = new ArrayList<DimensioneConColore>();
 		for (int i = 0; i < values.length; i++) {
 			value = values[i];
 			mRadiuses[i] = Math.sqrt(value);
 			mAngles[i] = Math.sqrt(value);
-
+			myListOfLati.add(new DimensioneConColore((float) value, "d", Math
+					.sqrt(value)));
 			mAngleSum += mAngles[i];
 			if (value < min)
 				min = value;
@@ -70,12 +73,10 @@ public class VistaTorta extends View {
 
 		mPaint.setStrokeWidth(1);
 		mPaint.setStyle(Style.STROKE);
-		mPaint.setColor(Color.BLUE);
 
 		mFillPaint = new Paint();
 		mFillPaint.setAntiAlias(true);
 		mFillPaint.setStyle(Style.FILL);
-		mFillPaint.setColor(Color.LTGRAY);
 
 		mPath = new Path();
 
@@ -125,6 +126,9 @@ public class VistaTorta extends View {
 			hsvColor[2] = (float) (1 - mAngles[i] / mAngleSum);
 
 			mFillPaint.setColor(Color.HSVToColor(hsvColor));
+			mPaint.setColor(myListOfLati.get(i).getColore_bordo());
+
+			mFillPaint.setColor(myListOfLati.get(i).getColore_sfondo());
 			canvas.drawPath(mPath, mFillPaint);
 			canvas.drawPath(mPath, mPaint);
 		}
@@ -141,12 +145,15 @@ public class VistaTorta extends View {
 		mRadiuses = new double[values.length];
 		mAngles = new double[values.length];
 		mAngleSum = 0;
+		myListOfLati.clear();
 		for (int i = 0; i < downloadedItems.size(); i++) {
 			value = downloadedItems.get(i).getSpesa() / spesaTotale;
 			values[i] = value;
 			mRadiuses[i] = Math.sqrt(value);
 			mAngles[i] = Math.sqrt(value);
 			mAngleSum += mAngles[i];
+			myListOfLati.add(new DimensioneConColore((float) value, "d", Math
+					.sqrt(value)));
 			if (value < min)
 				min = value;
 			else if (value > max)
