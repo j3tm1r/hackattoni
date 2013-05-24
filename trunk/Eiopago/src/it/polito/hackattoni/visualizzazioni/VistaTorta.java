@@ -147,7 +147,6 @@ public class VistaTorta extends View {
 			mRadiuses[i] = Math.sqrt(value);
 			mAngles[i] = Math.sqrt(value);
 			mAngleSum += mAngles[i];
-			mRegions.add(new Region());
 			if (value < min)
 				min = value;
 			else if (value > max)
