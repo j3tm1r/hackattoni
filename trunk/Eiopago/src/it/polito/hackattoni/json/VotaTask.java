@@ -22,42 +22,26 @@ import android.os.AsyncTask;
 public class VotaTask extends AsyncTask<Void, Integer, Void> {
 
 	private String path; // cartella nel server (es. "/IoPago/Categorie")
-	private List<Item> myList;
-	public List<Item> getMyList() {
-		return myList;
-	}
+
 
 	private OnDownloadJSONCompleted odjc;
 	private boolean myError = false;
 
 	public VotaTask(String path, OnDownloadJSONCompleted odjc) {
 		this.path = path;
-		myList = new ArrayList<Item>();
 		this.odjc = odjc;
 	}
 
 	@Override
 	protected Void doInBackground(Void... params) {
 		// Recupero il file JSON dal server:
-		JSONArray myJSONArray = getJSONArray();
-		try {
-			for (int i = 0; i < myJSONArray.length(); i++) {
-				JSONObject jo = myJSONArray.getJSONObject(i);
-				Item tmpItem = new Item(jo.getString("nome"),
-						jo.getString("categoria"), jo.getDouble("spesa"),
-						jo.getInt("anno"), jo.getInt("abitanti"));
-				myList.add(tmpItem);
-			}
-
-		} catch (JSONException je) {
-			myError = true;
-		}
+		vota();
 		return null;
 	}
 
 	@Override
 	protected void onPostExecute(Void v) {
-		odjc.onDownDownloadJSONCompleted(myList, myError);
+		odjc.onDownDownloadJSONCompleted(null, myError);
 	}
 
 	@Override
@@ -67,7 +51,7 @@ public class VotaTask extends AsyncTask<Void, Integer, Void> {
 		// pb.setProgress(progress[0]);
 	}
 
-	private JSONArray getJSONArray() {
+	private void vota() {
 		// Esempio: Json.getJSONArray("/task3");
 		String host = "192.168.0.2";
 		int port = 8080;
@@ -93,11 +77,8 @@ public class VotaTask extends AsyncTask<Void, Integer, Void> {
 				sb.append(line);
 			// in.close();
 			conn.disconnect();
-			String tmpString = sb.toString();
-			return new JSONArray(tmpString);
 		} catch (Exception e) {
 			myError = true;
-			return new JSONArray();
 		}
 
 	}
