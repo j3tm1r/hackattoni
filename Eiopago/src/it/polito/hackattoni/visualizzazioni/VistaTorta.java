@@ -2,16 +2,17 @@ package it.polito.hackattoni.visualizzazioni;
 
 import it.polito.hackattoni.eiopago.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.graphics.Region;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -35,6 +36,8 @@ public class VistaTorta extends View {
 
 	private List<Item> mItems;
 
+	private List<Region> mRegions;
+
 	public VistaTorta(Context context) {
 		this(context, null, 0);
 	}
@@ -49,10 +52,12 @@ public class VistaTorta extends View {
 		mAngleSum = 0;
 		mRadiuses = new double[values.length];
 		mAngles = new double[values.length];
+
 		for (int i = 0; i < values.length; i++) {
 			value = values[i];
 			mRadiuses[i] = Math.sqrt(value);
 			mAngles[i] = Math.sqrt(value);
+
 			mAngleSum += mAngles[i];
 			if (value < min)
 				min = value;
@@ -109,6 +114,7 @@ public class VistaTorta extends View {
 					(float) ((mAngles[i] / mAngleSum) * 360));
 			mPath.lineTo(mWidth / 2, mHeight / 2);
 			mPath.close();
+
 			mDrawAngle += (mAngles[i] / mAngleSum) * 360;
 
 			Log.d("AngoloDisegnato", " " + mDrawAngle);
@@ -141,6 +147,7 @@ public class VistaTorta extends View {
 			mRadiuses[i] = Math.sqrt(value);
 			mAngles[i] = Math.sqrt(value);
 			mAngleSum += mAngles[i];
+			mRegions.add(new Region());
 			if (value < min)
 				min = value;
 			else if (value > max)
