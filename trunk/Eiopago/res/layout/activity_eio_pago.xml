@@ -19,21 +19,22 @@
         android:background="@drawable/popup"
         android:orientation="vertical" >
 
-<!--         <Button -->
-<!--             android:id="@+id/button2" -->
-<!--             android:layout_width="120dp" -->
-<!--             android:layout_height="60dp" -->
-<!--             android:layout_alignParentBottom="true" -->
-<!--             android:layout_centerHorizontal="true" -->
-<!--             android:background="@drawable/popup_transp" -->
-<!--             android:text="Grafico Torta" /> -->
+        <!-- <Button -->
+        <!-- android:id="@+id/button2" -->
+        <!-- android:layout_width="120dp" -->
+        <!-- android:layout_height="60dp" -->
+        <!-- android:layout_alignParentBottom="true" -->
+        <!-- android:layout_centerHorizontal="true" -->
+        <!-- android:background="@drawable/popup_transp" -->
+        <!-- android:text="Grafico Torta" /> -->
 
-<!--         <Button -->
-<!--             android:id="@+id/button1" -->
-<!--             android:layout_width="120dp" -->
-<!--             android:layout_height="60dp" -->
-<!--             android:background="@drawable/popup_transp" -->
-<!--             android:text="Grafico Quadrati" /> -->
+
+        <!-- <Button -->
+        <!-- android:id="@+id/button1" -->
+        <!-- android:layout_width="120dp" -->
+        <!-- android:layout_height="60dp" -->
+        <!-- android:background="@drawable/popup_transp" -->
+        <!-- android:text="Grafico Quadrati" /> -->
 
         <Button
             android:id="@+id/button3"
@@ -48,6 +49,13 @@
             android:layout_height="60dp"
             android:background="@drawable/popup_transp"
             android:text="Regioni" />
+
+        <Button
+            android:id="@+id/proposta"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:background="@drawable/popup_transp"
+            android:text="Proposte" />
     </LinearLayout>
 
     <ImageView
