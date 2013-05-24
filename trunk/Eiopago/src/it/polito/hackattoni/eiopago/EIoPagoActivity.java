@@ -24,6 +24,8 @@ public class EIoPagoActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 		        Intent i = new Intent(EIoPagoActivity.this,GraficoQuadratiActivity.class);
+		        i.putExtra("regione", "sardegna");
+		        i.putExtra("anno",2008);
 				startActivity(i);
 			}
 		});
@@ -35,6 +37,7 @@ public class EIoPagoActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 		        Intent i = new Intent(EIoPagoActivity.this,GraficoTortaActivity.class);
+		        
 				startActivity(i);
 			}
 		});

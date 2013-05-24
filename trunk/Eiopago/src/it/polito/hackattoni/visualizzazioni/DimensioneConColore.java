@@ -12,6 +12,8 @@ public class DimensioneConColore {
 		this.dimensione=dimensione;
 		Random rnd = new Random(); 
 		int a= rnd.nextInt(256);
+		if(a>=240)
+			a=120; //Evito il bianco
 		int b= rnd.nextInt(256);
 		int c = rnd.nextInt(256);
 		colore_bordo = Color.argb(255, a, b, c);  

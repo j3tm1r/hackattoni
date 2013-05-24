@@ -14,21 +14,35 @@ import android.app.Activity;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class GraficoQuadratiActivity extends Activity implements OnDownloadJSONCompleted {
 	private DownloadJSONArrayTask myDownloadJSONArrayTask;
 	private TextView myTextView;
 	private FrameLayout myFrameLayout;
+	private String regione;
+	private ProgressBar myProgressBar;
+	private int anno;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//Recupero l'intent
+		regione=getIntent().getStringExtra("regione");
+		anno=getIntent().getIntExtra("anno", 2008);
+		
 		setContentView(R.layout.activity_grafico_quadrati);
 		myTextView = (TextView) findViewById(R.id.textView);
+		myTextView.setText("Regione: "+regione+"\n"+"Anno: "+anno);
 		myFrameLayout = (FrameLayout) findViewById(R.id.frame_layout_grafico_quadrati);
+		myProgressBar = (ProgressBar) findViewById(R.id.progressBar1);
 		
-		myDownloadJSONArrayTask = new DownloadJSONArrayTask("/IoPago/Regioni/piemonte/2008", this);
+		myDownloadJSONArrayTask = new DownloadJSONArrayTask("/IoPago/Regioni/"+regione+"/"+anno, this);
 		myDownloadJSONArrayTask.execute();
 	}
 
@@ -45,14 +59,23 @@ public class GraficoQuadratiActivity extends Activity implements OnDownloadJSONC
 			myDownloadJSONArrayTask.visualizzaDialogo(this, "Errore di connessione nello scaricamento del json dal server");
 		}
 		else {		
+			myProgressBar.setVisibility(View.GONE);
 			disegnaGraficoQuadrato(downloadedItems);
 		}
 	}
 	
 	private void disegnaGraficoQuadrato(List<Item> iList) {
+		/*
+		DisplayMetrics displayMetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+		int width = displayMetrics.widthPixels;
+		int height = displayMetrics.heightPixels;
+		*/
 		int width = myFrameLayout.getWidth();
 		int height = myFrameLayout.getHeight();
+
 		myFrameLayout.addView(new VistaQuadrati(this, iList, width, height));
+
 		
 	}
 
